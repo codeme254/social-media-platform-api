@@ -58,11 +58,9 @@ const emailIsAlreadyTaken = async (email) => {
 export const createUser = async (req, res) => {
   let { username, email, password } = req.body;
   if (await emailIsAlreadyTaken(email)) {
-    res
-      .status(409)
-      .json({
-        message: "Email address already taken, please try a different one",
-      });
+    res.status(409).json({
+      message: "Email address already taken, please try a different one",
+    });
     return;
   }
   try {
